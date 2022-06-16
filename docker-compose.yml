@@ -16,6 +16,7 @@ services:
             - AMPLITUDE_ID
             - ANALYTICS_SCRIPT_URLS
             - ANALYTICS_WHITELISTED_EVENTS
+            - AUDIO_QUALITY_OPUS_BITRATE
             - CALLSTATS_CUSTOM_SCRIPT_URL
             - CALLSTATS_ID
             - CALLSTATS_SECRET
@@ -39,7 +40,9 @@ services:
             - DISABLE_HTTPS
             - DISABLE_KICKOUT
             - DISABLE_POLLS
+            - DISABLE_PRIVATE_CHAT
             - DISABLE_REACTIONS
+            - DISABLE_REMOTE_VIDEO_MENU
             - DROPBOX_APPKEY
             - DROPBOX_REDIRECT_URI
             - DYNAMIC_BRANDING_URL
@@ -48,9 +51,9 @@ services:
             - ENABLE_BREAKOUT_ROOMS
             - ENABLE_CALENDAR
             - ENABLE_COLIBRI_WEBSOCKET
+            - ENABLE_E2EPING
             - ENABLE_FILE_RECORDING_SERVICE
             - ENABLE_FILE_RECORDING_SERVICE_SHARING
-            - ENABLE_FLOC
             - ENABLE_GUESTS
             - ENABLE_HSTS
             - ENABLE_HTTP_REDIRECT
@@ -59,6 +62,7 @@ services:
             - ENABLE_LIPSYNC
             - ENABLE_NO_AUDIO_DETECTION
             - ENABLE_NOISY_MIC_DETECTION
+            - ENABLE_OPUS_RED
             - ENABLE_PREJOIN_PAGE
             - ENABLE_P2P
             - ENABLE_WELCOME_PAGE
@@ -74,8 +78,12 @@ services:
             - ENABLE_TCC
             - ENABLE_TRANSCRIPTIONS
             - ENABLE_XMPP_WEBSOCKET
+            - ENABLE_JAAS_COMPONENTS
             - ETHERPAD_PUBLIC_URL
             - ETHERPAD_URL_BASE
+            - E2EPING_NUM_REQUESTS
+            - E2EPING_MAX_CONFERENCE_SIZE
+            - E2EPING_MAX_MESSAGE_PER_SECOND
             - GOOGLE_ANALYTICS_ID
             - GOOGLE_API_APP_CLIENT_ID
             - HIDE_PREMEETING_BUTTONS
@@ -149,7 +157,9 @@ services:
             - ENABLE_BREAKOUT_ROOMS
             - ENABLE_GUESTS
             - ENABLE_LOBBY
+            - ENABLE_RECORDING
             - ENABLE_XMPP_WEBSOCKET
+            - ENABLE_JAAS_COMPONENTS
             - GLOBAL_CONFIG
             - GLOBAL_MODULES
             - JIBRI_RECORDER_USER
@@ -209,7 +219,7 @@ services:
         networks:
             meet.jitsi:
                 aliases:
-                    - ${XMPP_SERVER}
+                    - ${XMPP_SERVER:-xmpp.meet.jitsi}
 
     # Focus component
     jicofo:
