@@ -24,6 +24,7 @@ RUN apt-dpkg-wrap apt-get update && \
 
 COPY static/ /usr/share/jitsi-meet/static/
 COPY images/ /usr/share/jitsi-meet/images/
+COPY images/favicon.ico /usr/share/jitsi-meet/favicon.ico
 COPY title.html /usr/share/jitsi-meet/title.html
 COPY manifest.json /usr/share/jitsi-meet/manifest.json
 
