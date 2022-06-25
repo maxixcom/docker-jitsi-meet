@@ -31,14 +31,18 @@
 {{ $PROSODY_RESERVATION_ENABLED := .Env.PROSODY_RESERVATION_ENABLED | default "false" | toBool }}
 {{ $PROSODY_RESERVATION_REST_BASE_URL := .Env.PROSODY_RESERVATION_REST_BASE_URL | default "" }}
 
+{{ $JIBRI_XMPP_USER := .Env.JIBRI_XMPP_USER | default "jibri" -}}
+
 admins = {
     "{{ $JICOFO_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
-    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
+    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
+    "{{ $JIBRI_XMPP_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
 }
 
 unlimited_jids = {
     "{{ $JICOFO_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
-    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
+    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
+    "{{ .Env.JIBRI_XMPP_USER }}@{{ .Env.XMPP_AUTH_DOMAIN }}"
 }
 
 plugin_paths = { "/prosody-plugins/", "/prosody-plugins-custom" }

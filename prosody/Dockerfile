@@ -66,6 +66,8 @@ COPY rootfs/ /
 COPY --from=builder /usr/local/lib/lua /usr/local/lib/lua
 COPY --from=builder /usr/local/share/lua /usr/local/share/lua
 
+COPY mod_token_moderation.lua /prosody-plugins/
+
 EXPOSE 5222 5280
 
 VOLUME ["/config", "/prosody-plugins-custom"]
