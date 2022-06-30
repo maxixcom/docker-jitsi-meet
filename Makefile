@@ -77,3 +77,5 @@ prepare:
 	FORCE_REBUILD=1 $(MAKE)
 
 .PHONY: all build tag push clean prepare release $(addprefix build_,$(JITSI_SERVICES))
+
+include $(CURDIR)/Boomstream.mk
