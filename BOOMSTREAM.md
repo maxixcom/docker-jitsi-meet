@@ -33,6 +33,14 @@ docker-compose -f ./docker-compose.yml -f ./jibri_multi.yml down -v
 
 Необходимо создать достаточное количество audio устройств:
 
+```
+echo "options snd-aloop enable=1,1,1,1,1,1,1,1,1,1,1,1 index=0,1,2,3,4,5,6,7,8,9,10,11" > /etc/modprobe.d/alsa-loopback.conf
+echo "snd-aloop">>/etc/modules
+modprobe snd-aloop
+lsmod | grep snd_aloop
+```
+
+
 (https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker#recording--live-streaming-configuration)
 (https://community.jitsi.org/t/setup-guide-jitsi-meet-native-multiple-6-jibri-docker-instances-working-on-the-same-aws-server/94181)
 
