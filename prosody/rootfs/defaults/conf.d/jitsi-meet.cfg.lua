@@ -2,11 +2,14 @@
 {{ $ENABLE_GUEST_DOMAIN := and $ENABLE_AUTH (.Env.ENABLE_GUESTS | default "0" | toBool)}}
 {{ $ENABLE_RECORDING := .Env.ENABLE_RECORDING | default "0" | toBool }}
 {{ $AUTH_TYPE := .Env.AUTH_TYPE | default "internal" }}
+{{ $JIBRI_XMPP_USER := .Env.JIBRI_XMPP_USER | default "jibri" -}}
 {{ $JICOFO_AUTH_USER := .Env.JICOFO_AUTH_USER | default "focus" -}}
+{{ $JIGASI_XMPP_USER := .Env.JIGASI_XMPP_USER | default "jigasi" -}}
 {{ $JVB_AUTH_USER := .Env.JVB_AUTH_USER | default "jvb" -}}
 {{ $JWT_ASAP_KEYSERVER := .Env.JWT_ASAP_KEYSERVER | default "" }}
 {{ $JWT_ALLOW_EMPTY := .Env.JWT_ALLOW_EMPTY | default "0" | toBool }}
 {{ $JWT_AUTH_TYPE := .Env.JWT_AUTH_TYPE | default "token" }}
+{{ $JWT_ENABLE_DOMAIN_VERIFICATION := .Env.JWT_ENABLE_DOMAIN_VERIFICATION | default "true" | toBool -}}
 {{ $MATRIX_UVS_ISSUER := .Env.MATRIX_UVS_ISSUER | default "issuer" }}
 {{ $MATRIX_UVS_SYNC_POWER_LEVELS := .Env.MATRIX_UVS_SYNC_POWER_LEVELS | default "0" | toBool }}
 {{ $JWT_TOKEN_AUTH_MODULE := .Env.JWT_TOKEN_AUTH_MODULE | default "token_verification" }}
@@ -34,6 +37,14 @@
 {{ $JIBRI_XMPP_USER := .Env.JIBRI_XMPP_USER | default "jibri" -}}
 
 admins = {
+    {{ if .Env.JIGASI_XMPP_PASSWORD }}
+    "{{ $JIGASI_XMPP_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
+    {{ end }}
+
+    {{ if .Env.JIBRI_XMPP_PASSWORD }}
+    "{{ $JIBRI_XMPP_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
+    {{ end }}
+
     "{{ $JICOFO_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
     "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
     "{{ $JIBRI_XMPP_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
@@ -86,6 +97,7 @@ VirtualHost "jigasi.meet.jitsi"
     modules_enabled = {
       "ping";
       "bosh";
+      "muc_password_check";
     }
     authentication = "token"
     app_id = "jitsi";
@@ -104,6 +116,7 @@ VirtualHost "{{ $XMPP_DOMAIN }}"
     {{ if $JWT_ASAP_KEYSERVER }}
     asap_key_server = "{{ .Env.JWT_ASAP_KEYSERVER }}"
     {{ end }}
+    enable_domain_verification = {{ $JWT_ENABLE_DOMAIN_VERIFICATION }}
   {{ else if eq $AUTH_TYPE "ldap" }}
     authentication = "cyrus"
     cyrus_application_name = "xmpp"
@@ -243,6 +256,9 @@ Component "{{ $XMPP_MUC_DOMAIN }}" "muc"
         {{ if $ENABLE_SUBDOMAINS -}}
         "muc_domain_mapper";
         {{ end -}}
+        {{ if .Env.MAX_PARTICIPANTS }}
+        "muc_max_occupants";
+        {{ end }}
     }
     muc_room_cache_size = 1000
     muc_room_locking = false
@@ -250,6 +266,10 @@ Component "{{ $XMPP_MUC_DOMAIN }}" "muc"
     {{ if .Env.XMPP_MUC_CONFIGURATION -}}
     {{ join "\n" (splitList "," .Env.XMPP_MUC_CONFIGURATION) }}
     {{ end -}}
+    {{ if .Env.MAX_PARTICIPANTS }}
+    muc_access_whitelist = { "{{ .Env.JICOFO_AUTH_USER }}@{{ .Env.XMPP_AUTH_DOMAIN }}" }
+    muc_max_occupants = "{{ .Env.MAX_PARTICIPANTS }}"
+    {{ end }}
 
 Component "focus.{{ $XMPP_DOMAIN }}" "client_proxy"
     target_address = "{{ $JICOFO_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
