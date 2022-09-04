@@ -5,3 +5,6 @@ start: docker-compose.yml jibri_multi.yml
 
 stop:
 	$(DOCKER_COMPOSE) -f docker-compose.yml -f jibri_multi.yml down -v
+
+status:
+	$(DOCKER_COMPOSE) -f docker-compose.yml -f jibri_multi.yml ps
