@@ -10,7 +10,7 @@ MEDIA_FILE=`ls ${RECORDED_PATH}/*.mp4 | head -n 1`
 
 FILE_NAME=$MEDIA_FILE
 
-BOOMSTREAM_SERVER_NODE=57
+BOOMSTREAM_SERVER_NODE=51
 BOOMSTREAM_PATH_MEDIA=/upload
 APP_ID=31097
 
@@ -28,9 +28,9 @@ if [ -f "${FILE_NAME}" ]; then
     # Move file
     mkdir -p $(dirname "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}")
     mv "${FILE_NAME}" "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}"
+    rm -rf ${RECORDED_PATH}
 
     # Send API call
-    #curl "https://boomstream.com/api/task/download?app=${FTP_USERNAME}&node=${BOOMSTREAM_SERVER_NODE}&file=${DOWNLOAD_PATH}&title=${BASENAME}"
     curl \
       --data-urlencode "app=${APP_ID}" \
       --data-urlencode "room=${ROOM_ID}" \
