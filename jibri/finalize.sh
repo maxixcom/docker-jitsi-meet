@@ -31,7 +31,7 @@ if [ -f "${FILE_NAME}" ]; then
 
     # Send API call
     #curl "https://boomstream.com/api/task/download?app=${FTP_USERNAME}&node=${BOOMSTREAM_SERVER_NODE}&file=${DOWNLOAD_PATH}&title=${BASENAME}"
-    echo curl \
+    curl \
       --data-urlencode "app=${APP_ID}" \
       --data-urlencode "room=${ROOM_ID}" \
       --data-urlencode "node=${BOOMSTREAM_SERVER_NODE}" \
