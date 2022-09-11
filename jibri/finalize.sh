@@ -26,9 +26,9 @@ if [ -f "${FILE_NAME}" ]; then
     sleep 10
 
     # Move file
-    mkdir -p $(dirname "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}")
-    mv "${FILE_NAME}" "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}"
-    rm -rf ${RECORDED_PATH}
+    mkdir -p $(dirname "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}") || exit 1
+    mv "${FILE_NAME}" "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}" || exit 1
+    rm -rf ${RECORDED_PATH} || exit 1
 
     # Send API call
     curl \

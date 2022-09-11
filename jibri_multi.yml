@@ -6,6 +6,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
@@ -45,6 +46,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_2:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.2:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -85,6 +87,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_3:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.3:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -125,6 +128,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_4:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.4:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -165,6 +169,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_5:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.5:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -205,6 +210,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_6:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.6:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -245,6 +251,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_7:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.7:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -285,6 +292,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_8:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.8:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -325,6 +333,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_9:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.9:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -365,6 +374,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_10:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.10:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
@@ -405,6 +415,7 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_11:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.11:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
