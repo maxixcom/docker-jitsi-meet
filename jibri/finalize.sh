@@ -27,7 +27,9 @@ if [ -f "${FILE_NAME}" ]; then
 
     # Move file
     mkdir -p $(dirname "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}") || exit 1
+    chmod 777 $(dirname "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}") || exit 1
     mv "${FILE_NAME}" "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}" || exit 1
+    chmod 777 "${BOOMSTREAM_PATH_MEDIA}${DOWNLOAD_PATH}" || exit 1
     rm -rf ${RECORDED_PATH} || exit 1
 
     # Send API call
