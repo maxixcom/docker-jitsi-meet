@@ -23,5 +23,6 @@ RUN apt-dpkg-wrap apt-get update && \
     adduser jibri rtkit
 
 COPY finalize.sh /config/
+COPY finalize.sh /opt/
 
 VOLUME /config

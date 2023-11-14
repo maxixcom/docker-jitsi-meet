@@ -2,20 +2,37 @@ version: '3.5'
 
 services:
     jibri:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -25,6 +42,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -41,21 +61,38 @@ services:
             meet.jitsi:
 
     jibri_2:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_2:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.2:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -65,6 +102,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -81,21 +121,38 @@ services:
             meet.jitsi:
 
     jibri_3:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_3:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.3:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -105,6 +162,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -121,21 +181,38 @@ services:
             meet.jitsi:
 
     jibri_4:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_4:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.4:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -145,6 +222,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -161,21 +241,38 @@ services:
             meet.jitsi:
 
     jibri_5:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_5:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.5:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -185,6 +282,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -201,21 +301,38 @@ services:
             meet.jitsi:
 
     jibri_6:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_6:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.6:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -225,6 +342,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -241,21 +361,38 @@ services:
             meet.jitsi:
 
     jibri_7:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_7:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.7:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -265,6 +402,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -281,21 +421,38 @@ services:
             meet.jitsi:
 
     jibri_8:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_8:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.8:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -305,6 +462,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -321,21 +481,38 @@ services:
             meet.jitsi:
 
     jibri_9:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_9:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.9:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -345,6 +522,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -361,21 +541,38 @@ services:
             meet.jitsi:
 
     jibri_10:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_10:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.10:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -385,6 +582,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN
@@ -401,21 +601,38 @@ services:
             meet.jitsi:
 
     jibri_11:
-        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-7439-2}
+        image: jitsi/jibri:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         volumes:
             - ${CONFIG}/jibri_11:/config:Z
+            - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.11:/home/jibri/.asoundrc
         shm_size: '2gb'
         cap_add:
             - SYS_ADMIN
         environment:
+            - AUTOSCALER_SIDECAR_KEY_FILE
+            - AUTOSCALER_SIDECAR_KEY_ID
+            - AUTOSCALER_SIDECAR_GROUP_NAME
+            - AUTOSCALER_SIDECAR_HOST_ID
+            - AUTOSCALER_SIDECAR_INSTANCE_ID
+            - AUTOSCALER_SIDECAR_PORT
+            - AUTOSCALER_SIDECAR_REGION
+            - AUTOSCALER_SIDECAR_SHUTDOWN_POLLING_INTERVAL
+            - AUTOSCALER_SIDECAR_STATS_POLLING_INTERVAL
+            - AUTOSCALER_URL
             - CHROMIUM_FLAGS
             - DISPLAY=:0
             - ENABLE_STATS_D
+            - JIBRI_WEBHOOK_SUBSCRIBERS
             - JIBRI_HTTP_API_EXTERNAL_PORT
             - JIBRI_HTTP_API_INTERNAL_PORT
             - JIBRI_RECORDING_RESOLUTION
+            - JIBRI_RECORDING_VIDEO_ENCODE_PRESET
+            - JIBRI_RECORDING_CONSTANT_RATE_FACTOR
+            - JIBRI_RECORDING_FRAMERATE
+            - JIBRI_RECORDING_QUEUE_SIZE
+            - JIBRI_RECORDING_STREAMING_MAX_BITRATE
             - JIBRI_USAGE_TIMEOUT
             - JIBRI_XMPP_USER
             - JIBRI_XMPP_PASSWORD
@@ -425,6 +642,9 @@ services:
             - JIBRI_RECORDING_DIR
             - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH
             - JIBRI_STRIP_DOMAIN_JID
+            - JIBRI_STATSD_HOST
+            - JIBRI_STATSD_PORT
+            - LOCAL_ADDRESS
             - PUBLIC_URL
             - TZ
             - XMPP_AUTH_DOMAIN

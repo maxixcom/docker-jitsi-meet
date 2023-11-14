@@ -50,3 +50,11 @@ make start
 
 make stop
 ```
+
+## Сборка
+
+```
+FORCE_REBUILD=1 JITSI_BUILD=boomstream make build-all
+
+FORCE_REBUILD=1 JITSI_BUILD=boomstream make tag-all
+```

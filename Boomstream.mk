@@ -8,3 +8,12 @@ stop:
 
 status:
 	$(DOCKER_COMPOSE) -f docker-compose.yml -f jibri_multi.yml ps
+
+
+start-one: docker-compose.yml jibri.yml
+	$(DOCKER_COMPOSE) -f docker-compose.yml -f jibri.yml up -d
+
+stop-one: docker-compose.yml jibri.yml
+	$(DOCKER_COMPOSE) -f docker-compose.yml -f jibri.yml down -v
+
+
