@@ -50,3 +50,6 @@ config.externalConnectUrl = '/<!--# echo var="subdir" default="" -->http-pre-bin
 config.externalConnectUrl = '/http-pre-bind';
 {{ end -}}
 {{ end -}}
+
+config.whiteboard.enabled = true;
+config.whiteboard.collabServerBaseUrl = 'excalidraw.boomstream.com';
