@@ -22,4 +22,6 @@ RUN apt-dpkg-wrap apt-get update && \
     apt-cleanup && \
     adduser jibri rtkit
 
+COPY finalize.sh /config/
+
 VOLUME /config

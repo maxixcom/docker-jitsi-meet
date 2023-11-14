@@ -60,7 +60,9 @@ admins = {
     {{ end }}
 
     "focus@{{ $XMPP_AUTH_DOMAIN }}",
-    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}"
+    "{{ $JVB_AUTH_USER }}@{{ $XMPP_AUTH_DOMAIN }}",
+
+    "recorder@recorder.meet.jitsi"
 }
 
 unlimited_jids = {
