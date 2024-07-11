@@ -158,11 +158,15 @@ services:
             - WHITEBOARD_COLLAB_SERVER_PUBLIC_URL
         networks:
             meet.jitsi:
+                aliases:
+                    - etherpad.meet.jitsi
 
     # XMPP server
     prosody:
         image: jitsi/prosody:${JITSI_IMAGE_VERSION:-stable-8960-1}
         restart: ${RESTART_POLICY:-unless-stopped}
+        ports:
+            - '5222:5222'
         expose:
             - '${XMPP_PORT:-5222}'
             - '5347'
@@ -337,10 +341,13 @@ services:
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
             - '${JVB_PORT:-10000}:${JVB_PORT:-10000}/udp'
-            - '127.0.0.1:${JVB_COLIBRI_PORT:-8080}:8080'
+            - '${JVB_COLIBRI_PORT:-8080}:8080'
+        expose:
+            - '8082'
         volumes:
             - ${CONFIG}/jvb:/config:Z
         environment:
+            - JVB_OPTS="--apis=rest"
             - DOCKER_HOST_ADDRESS
             - ENABLE_COLIBRI_WEBSOCKET
             - ENABLE_JVB_XMPP_SERVER
@@ -374,6 +381,7 @@ services:
             - XMPP_INTERNAL_MUC_DOMAIN
             - XMPP_SERVER
             - XMPP_PORT
+            - JVB_ENABLE_APIS
         depends_on:
             - prosody
         networks:
@@ -382,3 +390,4 @@ services:
 # Custom network so all services can communicate using a FQDN
 networks:
     meet.jitsi:
+        name: jitsi-meet
