@@ -1,4 +1,6 @@
 *.swp
 .env*
 docker-compose.override.yml
-.idea/
+log-analyser/grafana
+**/.DS_Store
+**/.idea

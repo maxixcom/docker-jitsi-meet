@@ -1,3 +1,216 @@
+## stable-9584-1
+
+Based on stable release 9584-1.
+
+* 29a4523 feat(jvb) add JVB_CC_TRUST_BWE environment variable
+* 0f7be54 feat(prometheus): Prometheus container and basic scraping configuration  (#1838)
+* 9c87bba feat(jitsi-meet): added grafana loki and otel integration for log analysis (#1844)
+* fcb90ba fix(web): whiteboard config.js syntax error (#1851)
+* 811518b misc: working on unstable
+
+## stable-9584
+
+Based on stable release 9584.
+
+* b4604f3 feat(whiteboard) add builtin whiteboard integration
+* 49bd165 feat(jibri) update Chrome to 126
+* 980703b fix(jibri): display modes in xorg config
+* c65d2bd feat(jigasi,jicofo,jvb,jibri,prosody): add healthcheck.sh scripts and prosody http_health mod
+* d2ac43d feat(jigasi): Add new environment variables for jigasi configuration (#1841)
+* fbc250e feat(prosody): openmetrics module support (#1832)
+* 2adac72 feat(prosody): Drop non existing config.
+* e22b4f3 feat(jibri): Adds more fonts.
+* 982e577 feat(jicofo,jvb,web) default to using SCTP based datachannels
+* 55c975f fix(jicofo): use integer for port value to fix addition (#1826)
+* 7c8763f base: update tpl to version 1.3.0
+* 1d3c0f1 jibri: fail to start if the SYS_ADMIN cap is missing (#1816)
+* cacee4e jvb: adds autoscaler sidecar hook to signal final shutdown (#1809)
+* 726b0f0 jibri: adds autoscaler sidecar hook to signal final shutdown (#1810)
+* f2b2cc4 etherpad: update image version and settings
+* 731d6d1 base: update tpl to make toBool more resilient
+* 59c4eb2 jvb: add fallback WS server ID
+* 9a54843 jvb: add ability to configure the TLS option for colibri WS
+* 79a4635 jvb: add ability to disable XMPP
+* 77ce86a jvb: add ability to enable SCTP datachannels
+* 76ffaa7 jicofo, jvb: fix OCTO + SCTP behaviour
+* 0298a30 misc: working on unstable
+
+## stable-9457-2
+
+Based on stable release 9457-2.
+
+* fed87fb web: update acme.sh version to 3.0.7
+* 11285cd prosody: Fixed the wrong position of the JWT_SIGN_TYPE setting in the file (#1796)
+* f9ff2a4 misc: working on unstable
+
+## stable-9457-1
+
+Based on stable release 9457-1.
+
+* 09bbfaf misc: working on unstable
+
+## stable-9457
+
+Based on stable release 9457.
+
+* 6f98bbe prosody: add ability to customize TURN TTL value
+* 8fe3139 jvb: fix autoscaler sidecar config (#1785)
+* 48d803c jigasi: fix autoscaler sidecar config for shutdown url (#1784)
+* c951116 jibri: fix autoscaler sidecar config (#1783)
+* cae1e40 feat(jigasi): Adds trusted domains option.
+* e939230 prosody: add ability to customize JWT signature type
+* b0f9eb2 prosody: integrate prosody-plugins-contrib
+* 604ba22 prosody: Switches lua gc back to incremental. (#1777)
+* 68d4b1a jibri: fix xorg modeline for 1280x720 (#1778)
+* 8094a17 web: add ability to change CORS header value
+* 03b6ca2 web: remove no longer needed mime type definition
+* 70ba4cb base: update to Debian Bookworm
+* dc5cbae misc: working on unstable
+
+## stable-9364-1
+
+Based on stable release 9364-1.
+
+* a5ebb99 jibri: flag to support prometheus-style metrics (#1768)
+* 80fc10e feat(prosody): Cleans up gc settings.
+* 69bba17 feat(prosody): Adjusts lua to use generational GC for brewery.cfg.lua.
+* 2798426 feat(prosody): Adjusts lua to use generational GC.
+* 28d2b32 feat(prosody): Make sure muc tumbstones is disabled.
+* d5df19d jigasi: autoscaler sidecar support (#1738)
+* 0953ca0 jigasi: skip SIP configuration when configured as a transcriber
+* ca1d670 fix: :bug: wrong quote in default config (#1761)
+* 360361e jibri: move xmpp config for easier override (#1748)
+* 452f5ba misc: working on unstable
+
+## stable-9364
+
+Based on stable release 9364.
+
+* ca61ea2 jibri: add ability to ignore certificate errors
+* 615396e java: use Java 17
+* 140db22 jibri: check for chrome bin before pre-warm (#1757)
+* 648612f feat(prosody): Always report visitors support when enabled.
+* 28f3cf8 jvb: lipcap from apt to allow for pcap dumps (#1747)
+* 33350c3 prosody: fix env var default value
+* d6dc1e3 base-java: install nodejs 20 from nodesource
+* 8f84f2f jibri: use storage.googleapis.com location for chromedriver
+* 1bbb4ab fix(prosody): Updates a rate whitelist config that changed in jitsi-meet. (#1741)
+* eccf68e misc: working on unstable
+
+## stable-9258
+
+Based on stable release 9258.
+
+* a198d56 compose: add jvb dependency to web container (#1739)
+* 5c5742b prosody: var for speakerstats modules
+* a1d1f2c web: Add env vars for setting 1080p and 4k bitrates.
+* bb69407 Remove "ping" in ViarualHosts (#1728)
+* 14efd9c prosody: disable "offline" and "register" modules. (#1727)
+* 8e28256 misc: working on unstable
+
+## stable-9220-1
+
+Based on stable release 9220-1.
+
+* 1e97277 jibri: update Chrome to version 121
+* 310b80d jvb: add env var to control require-valid-address
+* b0092bc jicofo,jigasi,jvb: fix accidentally enabling Sentry
+* 102281e base: update tpl
+* bf237da etherpad: update etherpad image to etherpad/etherpad:1.9.6 (#1725)
+* 7381471 misc: working on unstable
+
+## stable-9220
+
+Based on stable release 9220.
+
+* 4eb5575 prosody: c2s encryption flag from environment
+* cc34823 prosody: tune internal muc settings
+* f512116 prosody: jibri and jigasi skip muc passwords (#1718)
+* 6c1f384 Add flag for require-muc-config-flag. (#1717)
+* 6e6dd96 web: nginx config for load-test client if present (#1715)
+* 11d7d75 fix: Do not load domain_mapper under breakout component (#1714)
+* 4ca5763 prosody: the new version of contrib-prosody-plugins (#1713)
+* d31e164 build: simplify detection of the target platform
+* 21f04ea base: update tpl
+* 9b686c6 prosody: Drops unused module.
+* 1365d7f base-java: include jdk package
+* 4584779 jicofo: fix enable sctp octo defaults (#1708)
+* 2a3f8fd web: fix config.js syntax
+* df88c7c Fix/web settings prop syntax (#1706)
+* d64ae1c web: remove 'startBitrate' that is no longer supported.
+* 1cba0b5 web: Fix the maxbitrates config setting. Also, remove the 'enforcePreferredCodec' setting which is no longer supported.
+* 1dbe5cd web: cleanup config
+* 3a888fd jicofo: add support for max-ssrcs-per-user config
+* 5093efb feat: Add testing flag for Av1
+* 7f86006 prosody: remove muc_meeting_id from lobby
+* c21a598 prosody: visitors config whitespace fix (#1694)
+* 8845606 Move trusted_proxies from visitors to main prosody config file. (#1699)
+* e41e4f4 Require tls by default. (#1698)
+* 80e4ee6 Remove unnecessary modules and properties (#1697)
+* 2915176 prosody: skip recorder account unless in client mode
+* 46b98b5 prosody: brewery mode for jvb/jicofo discovery muc
+* 52eef2e feat: Add an option to set jibri-sip brewery jid. (#1689)
+* ab30f56 prosody: enable muc_meeting_id in lobby component
+* 5cc0ef0 jicofo: fix duplicate line
+* 2a67885 jicofo: trusted domain list
+* 78fb030 fix: Fix typo in var name. (#1690)
+* 1ad045e feat: Add an option to enable sctp for relays. (#1688)
+* aa898e4 jicofo: fix visitors auth domain (#1687)
+* ec8615a fix: Fix default JIBRI_PENDING_TIMEOUT. (#1686)
+* 483bbde web: trim deprecated options and defaults
+* 11cbfcc web: provide bosh URL as relative only if flagged (#1682)
+* 60100d6 jvb: expose public IP in autoscaler sidecar config (#1679)
+* b8a9080 task: fix shutdown script
+* 2e3c272 jvb: fix terminate script for autoscaler sidecar
+* 3519113 jvb: finish script for graceful shutdown (#1676)
+* 4fba8b5 task: support logging to file in JVB container (#1675)
+* 431cdcc web: allow desktop framerate to be automatically determined by the browser
+* 4c009ad jvb: fix version for autoscaler config
+* 4531615 prosody: add smacks to guest vhost
+* b4428bf prosody: use mod_smacks.lua from prosody since 0.12.4
+* ee2f3c9 docker-compose.yml: expose jicofo and jvb env vars for defining max memory.
+* 940cd97 env.example: add jicofo and jvb env vars for defining max memory.
+* 71b3892 jicofo,jvb,jigasi: fix SENTRY_DSN cannot be defined
+* e6a0c04 jibri: add check for /dev/shm size
+* dbffba1 Revert "jicofo, jigasi, jvb: fix SENTRY_DSN not being read"
+* 073f85d Revert "logging: fix reference to old variable"
+* 8415c84 logging: fix reference to old variable
+* fa2b4db jicofo, jigasi, jvb: fix SENTRY_DSN not being read
+* 42a2153 misc: working on unstable
+
+## stable-9111
+
+Based on stable release 9111.
+
+* 825730d web: nginx ws-colibri proxy regex updates (#1645)
+* 54d3aca jicofo: add AV1 options
+* 0827186 prosody: stun in external services (#1644)
+* d67938c misc: working on unstable
+
+## stable-9078
+
+Based on stable release 9078.
+
+* 3b9afe4 release: build images before comitting the changelog
+* 54d422b jvb: autoscaler sidecar support
+* 9f0658d sample: escape/encapsulate string
+* 5d05ba2 jicofo: support jicofo log file for tailing (#1632)
+* 8555fe1 web: param to control config.hosts.authDomain (#1627)
+* cd1c9fb prosody: remove muc limit messages from visitors (#1626)
+* af50dde prosody: s2s whitelist duplicate param fix (#1625)
+* eb91893 prosody: add ping module to auth domain (#1624)
+* 261caa3 prosody: guest ping module, var for auth type (#1623)
+* 7fb1026 prosody: params for limits (#1622)
+* cf894ce prosody: variables for lobby and breakout modules
+* a827437 prosody: param to link room metadata to main vhost (#1616)
+* 5120595 prosody: var for config in main vhost (#1615)
+* bebd748 web: flag to control sctp bridge channel choice (#1613)
+* 6bfa830 prosody: visitor mode support (#1611)
+* 7bfc5c1 prosody: update version of prosody-plugings package
+* 3a77aac jicofo: support visitors in jicofo configuration (#1610)
+* f860c5d jvb: don’t send Jetty server version
+* 63380fa misc: working on unstable
+
 ## stable-8960-1
 
 Based on stable release 8960-1.
