@@ -10,9 +10,9 @@ MEDIA_FILE=`ls ${RECORDED_PATH}/*.mp4 | head -n 1`
 
 FILE_NAME=$MEDIA_FILE
 
-BOOMSTREAM_SERVER_NODE=51
+BOOMSTREAM_SERVER_NODE=1
 BOOMSTREAM_PATH_MEDIA=/upload
-APP_ID=31097
+APP_ID=0
 
 # Get download path
 DATE=$(date "+%Y/%m/%d")
@@ -39,5 +39,5 @@ if [ -f "${FILE_NAME}" ]; then
       --data-urlencode "node=${BOOMSTREAM_SERVER_NODE}" \
       --data-urlencode "file=${DOWNLOAD_PATH}" \
       --data-urlencode "title=${BASENAME}" \
-      https://boomstream.com/api/task/download
+      https://dev.boomstream.com/api/task/download
 fi
