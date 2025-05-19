@@ -7,7 +7,7 @@ services:
         volumes:
             - ${CONFIG}/jibri:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
-        shm_size: '2gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:

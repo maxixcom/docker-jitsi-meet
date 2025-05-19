@@ -322,7 +322,9 @@ services:
         image: jitsi/jicofo:${JITSI_IMAGE_VERSION:-stable-9584-1}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '127.0.0.1:${JICOFO_REST_PORT:-8888}:8888'
+            - '0.0.0.0:${JICOFO_REST_PORT:-8888}:8888'
+        expose:
+            - '8888'
         volumes:
             - ${CONFIG}/jicofo:/config:Z
         environment:

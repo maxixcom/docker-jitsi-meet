@@ -7,7 +7,7 @@ services:
         volumes:
             - ${CONFIG}/jibri:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
-        shm_size: '4gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:
@@ -67,7 +67,7 @@ services:
             - ${CONFIG}/jibri_2:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.2:/home/jibri/.asoundrc
-        shm_size: '4gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:
@@ -127,7 +127,7 @@ services:
             - ${CONFIG}/jibri_3:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.3:/home/jibri/.asoundrc
-        shm_size: '4gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:
@@ -187,7 +187,7 @@ services:
             - ${CONFIG}/jibri_4:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.4:/home/jibri/.asoundrc
-        shm_size: '4gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:
@@ -247,7 +247,7 @@ services:
             - ${CONFIG}/jibri_5:/config:Z
             - ${BOOMSTREAM_MEDIA_PATH}:/upload
             - ./jibri_multi/.asoundrc.5:/home/jibri/.asoundrc
-        shm_size: '4gb'
+        shm_size: '8gb'
         cap_add:
             - SYS_ADMIN
         environment:
