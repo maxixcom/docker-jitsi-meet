@@ -18,14 +18,50 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "loki",
-        "uid": "b8130a28-4867-4668-917d-539c93852857"
+        "uid": "a4bdfb3e-762a-46e5-a79f-2e7bbe88d444"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "a4bdfb3e-762a-46e5-a79f-2e7bbe88d444"
+          },
+          "editorMode": "code",
+          "expr": "{exporter=\"OTLP\"} | json | attributes_attrs_service=\"jitsi-jvb\"",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "JVB Logs",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "a4bdfb3e-762a-46e5-a79f-2e7bbe88d444"
       },
       "fieldConfig": {
         "defaults": {
@@ -46,20 +82,19 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
+        "x": 12,
         "y": 0
       },
       "id": 2,
       "options": {
         "displayLabels": [
-          "percent"
+          "percent",
+          "name"
         ],
         "legend": {
-          "calcs": [],
-          "displayMode": "hidden",
-          "placement": "right",
-          "showLegend": false,
-          "values": []
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
         "pieType": "pie",
         "reduceOptions": {
@@ -81,19 +116,19 @@
             "uid": "b8130a28-4867-4668-917d-539c93852857"
           },
           "editorMode": "code",
-          "expr": "sum by (attributes_level) (\n  rate({exporter=\"OTLP\"} | json|attributes_log_file_name=\"jicofo.log\"| line_format \"{{.log}}\" | logfmt | pattern \"[<_>] <_level>: <_>\"[5m])\n)",
+          "expr": "sum by (attributes_level) (\n  rate({exporter=\"OTLP\"} | json|attributes_attrs_service=\"jitsi-jvb\"| line_format \"{{.log}}\" | logfmt | pattern \"[<_>] <_level>: <_>\"[5m])\n)",
           "legendFormat": "Level: {{attributes_level}}",
           "queryType": "range",
           "refId": "A"
         }
       ],
-      "title": "Log Levels Pie Chart",
+      "title": "JVB Log Levels Pie Chart",
       "type": "piechart"
     },
     {
       "datasource": {
         "type": "loki",
-        "uid": "b8130a28-4867-4668-917d-539c93852857"
+        "uid": "a4bdfb3e-762a-46e5-a79f-2e7bbe88d444"
       },
       "fieldConfig": {
         "defaults": {
@@ -105,14 +140,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -147,14 +184,13 @@
             "uid": "b8130a28-4867-4668-917d-539c93852857"
           },
           "editorMode": "code",
-          "expr": "sum by (attributes_level, attributes_log_file_name) (\n  rate({exporter=\"OTLP\"} | json|attributes_log_file_name=\"jicofo.log\"| line_format \"{{.attributes_message}}\" | logfmt | pattern \"[<_>] <attributes_level>#<attributes_log_file_name>: <_>\"[5m]))",
+          "expr": "sum by (attributes_level, attributes_attrs_service) (\n  rate({exporter=\"OTLP\"} | json|attributes_attrs_service=\"jitsi-jvb\" | line_format \"{{.attributes_message}}\" | logfmt | pattern \"[<_>] <attributes_level>#<attributes_attrs_service>: <_>\"[5m]))",
           "legendFormat": "Level: {{attributes_level}}",
           "queryType": "range",
           "refId": "A"
         }
       ],
-      "title": "Log Levels Bar Chart",
-      "transformations": [],
+      "title": "JVB Log Levels Bar Chart",
       "type": "bargauge"
     }
   ],
@@ -170,8 +206,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Jicofo Logs",
-  "uid": "f2dcfe84-3c27-4b1d-8583-bc2c97a8d22d",
-  "version": 5,
+  "title": "JVB Dashboard",
+  "uid": "d53a9efb-ca3b-4f47-af3a-9638de8a35fa",
+  "version": 10,
   "weekStart": ""
 }
